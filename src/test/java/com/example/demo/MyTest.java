@@ -15,6 +15,68 @@ public class MyTest {
     @Test
     void test() throws Exception {
 
+//        System.out.println(-1 >>>2);
+//        System.out.println(-1 >>> 1);
+
+//        Class<PoJoObj> p=(Class<PoJoObj>) Class.forName("com.example.demo.common.PoJoObj");//true
+//        Class.forName("com.example.demo.common.PoJoObj",false,ClassLoader.getSystemClassLoader());
+//        Object.class.isAssignableFrom(p);
+//        Object poJoObj=new PoJoObj();
+//        assertTrue(p.isInstance(poJoObj));
+
+//        URL url=MyTest.class.getResource("D.class");//给定文件名称
+//        System.out.println(url);
+//        url=MyTest.class.getResource("/file");//绝对路径
+//        System.out.println(url);
+//        URI uri=url.toURI();
+//        System.out.println(uri);
+
+//        MyTest.class.getResource();//调用resolveName()
+//        ClassLoader.getSystemResource();
+
+//        ClassLoader classLoader=ClassLoader.getSystemClassLoader();
+//        classLoader.loadClass("com.example.demo.D");
+//        Class.forName("com.example.demo.D",true,classLoader);
+
+//        System.out.println(OneEnum.ONE.getClass());//com.example.demo.common.OneEnum$1
+//        System.out.println(OneEnum.ONE.getClass().getSuperclass());//com.example.demo.common.OneEnum
+//        System.out.println(OneEnum.ONE.getDeclaringClass());//com.example.demo.common.OneEnum
+//        System.out.println(OneEnum.ONE.ordinal());//0
+//        assertTrue(OneEnum.TWO.compareTo(OneEnum.ONE)>0);
+
+//        String s="abc";
+//        String s1="abc";
+//        assertTrue(s1==s);//true
+//        char[] chars={'a','b','c'};
+//        String s2=new String(chars);
+//        assertTrue(s2==s1);//false
+
+//        //-1
+//        //1 0001 ->1 0000 -> 1 1111
+//
+//        //~ 取反
+//        System.out.println(~1); //0 0001  1 1110 ->1 0001 ->1 0010= -2
+//        //&
+//        System.out.println(3 &5);//0 0011 & 0 0101 ->0 001=1
+//        System.out.println(3 &-1);//0 0011 & 1 1111 ->0 0011=3
+//        System.out.println(-3 & -1);//1 1101 & 1 1111 ->1 1101=-3
+//        //|
+//        System.out.println(3 | 5);//0011 | 0101 -> 0111=7
+//        //^
+//        System.out.println(3 ^5);//0011 ^ 0101 -> 0110=6
+//        System.out.println(1 ^0);//特殊 与0^ 为自身
+//        System.out.println(1 ^1);//特殊 与自身^ 为0
+//
+//        //>>
+//        System.out.println(7 >>2);//0111 -> 0001=1
+//        System.out.println(-7 >>2);//1 0111 -> 1 0110-> 1 111...1001 >>2 ->1 111...1110(原码)
+//        // ->1 000...0001->1 000...0010=-2
+//        System.out.println(-1 >>1);//-1
+//        System.out.println(-1 >>2);//-1
+//        //>>>
+//        System.out.println(-1 >>> 1);//1 111.1111 >>>1 ->0111.1111(正)=2147483647
+//        //<<
+//        System.out.println(1<<2);//0001 <<2 ->0100=4
 
 //        long s=System.currentTimeMillis();
 //        for (int i = 0; i < 1000; i++) {

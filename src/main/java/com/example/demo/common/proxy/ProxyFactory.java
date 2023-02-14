@@ -1,4 +1,4 @@
-package com.example.demo.proxy;
+package com.example.demo.common.proxy;
 
 import com.example.demo.service.IHelloService;
 

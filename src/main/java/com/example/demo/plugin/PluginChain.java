@@ -45,8 +45,20 @@ public class PluginChain {
         pluginChain.addPlu(new ParamPrintPlugin());
         pluginChain.addPlu(new InvokeCostPlugin());
 
-        ITestService testInterface = arg -> System.out.println("这里是测试方法");
-        ITestService proxy = (ITestService) pluginChain.pluginAll(testInterface);
-        proxy.test("你好");
+        ITestService testInterface = new ITestService() {
+            @Override
+            public void test(String arg) {
+                System.out.println("这里是测试方法");
+            }
+
+            @Override
+            public void close() {
+                System.out.println("执行结束 in close method");
+            }
+        };
+
+        try (ITestService proxy = (ITestService) pluginChain.pluginAll(testInterface)) {
+            proxy.test("hello");
+        }
     }
 }

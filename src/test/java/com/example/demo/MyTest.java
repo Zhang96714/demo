@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.common.PoJoObj;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -12,7 +13,19 @@ public class MyTest {
      * 测试
      */
     @Test
-    void test() throws Exception{
+    void test() throws Exception {
+
+
+//        long s=System.currentTimeMillis();
+//        for (int i = 0; i < 1000; i++) {
+//            cloneTest();
+//        }
+//        System.out.println("clone finish cost:"+(System.currentTimeMillis()-s)+"ms");
+
+//        System.out.println(new Throwable());
+//        System.out.println(new Exception());
+//        System.out.println(new Error());
+
 //        System.out.println('\0');
 
 //        String s="你";
@@ -46,7 +59,6 @@ public class MyTest {
 //        Integer[] integers={1,2,3};
 //        assertEquals(3,Stream.of(integers).count());
 //        assertEquals(3,Arrays.stream(integers).count());
-
 
 //        int[] ints={1,2,3};
 //        System.arraycopy(ints,1,ints,0,2);
@@ -112,7 +124,6 @@ public class MyTest {
 
 //        assertFalse(aBoolean);
 
-
 //        Thread thread=new Thread();
 //        BlockingQueue<Runnable> threadBlockingQueue=new ArrayBlockingQueue<>(10);
 //        ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor(10,100,10, TimeUnit.MINUTES,threadBlockingQueue);
@@ -138,6 +149,18 @@ public class MyTest {
 //        System.out.println((char) 46);// .
 //        System.out.println("---");
 //        System.out.println((char) 91);// [
+    }
+
+    //---一些辅助方法
+    private void cloneTest() throws CloneNotSupportedException {
+        PoJoObj field = new PoJoObj();
+        field.setAnInt(555);
+
+        PoJoObj old = new PoJoObj();
+        old.setPoJoObj(field);
+//        System.out.println(old);
+        PoJoObj copy = (PoJoObj) old.clone();
+//        System.out.println(copy);
     }
 
 }

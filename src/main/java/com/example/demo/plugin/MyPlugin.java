@@ -22,4 +22,8 @@ public interface MyPlugin {
      */
     Object plugin(Object target);
 
+    default boolean skip(MyInvocationInfo invocationInfo) {
+        return false;
+    }
+
 }

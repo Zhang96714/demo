@@ -32,14 +32,19 @@ public class ParamPrintPlugin implements MyPlugin {
     }
 
     private void printArgs(Object[] args,Method method){
-        StringBuilder ar=new StringBuilder();
-        for (Object p:args) {
+        if (null == args || args.length == 0) {
+            //no param method do skip
+            return;
+        }
+        StringBuilder ar = new StringBuilder("(");
+        for (Object p : args) {
             ar.append(p).append(",");
         }
-        if(StringUtils.hasLength(ar)){
-            ar.deleteCharAt(ar.length()-1);
+        if (StringUtils.hasLength(ar)) {
+            ar.deleteCharAt(ar.length() - 1);
         }
-        System.out.println(method.getName()+":"+ar);
+        ar.append(")");
+        System.out.println("method name:" + method.getName() + ar);
     }
 
     @Override

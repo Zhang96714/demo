@@ -8,4 +8,13 @@ public class TestServiceImpl implements ITestService {
     public void test(String arg) {
         System.out.println("test");
     }
+
+    static void staticMethod() {
+        System.out.println("call in static method.");
+    }
+
+    @Override
+    public void close() {
+        TestServiceImpl.staticMethod();
+    }
 }

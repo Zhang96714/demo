@@ -2,7 +2,6 @@ package com.example.demo;
 
 import com.example.demo.common.PoJoObj;
 import org.junit.jupiter.api.Test;
-
 /**
  * @author: zhangguofen
  * @date: 2023/1/30 12:48
@@ -14,6 +13,81 @@ public class MyTest {
      */
     @Test
     void test() throws Exception {
+
+
+//        String regex="(\\w)";
+//        String s=Pattern.quote(regex);
+////        System.out.println(s);
+////        System.out.println(Pattern.matches(regex,"a"));
+//        assertTrue(Pattern.matches(regex,"a"));
+//        assertFalse(Pattern.matches(s,"b"));
+//        Pattern pattern=Pattern.compile(regex);
+//        pattern.splitAsStream()
+//        Matcher matcher=pattern.matcher("1a");
+//        System.out.println( matcher.find());//true
+//        System.out.println(matcher.lookingAt());;//begin true
+//        System.out.println(matcher.find());//true
+//        System.out.println(matcher.start());
+//        System.out.println(matcher.end());
+//
+//        System.out.println(matcher.group(0));
+//        System.out.println(matcher.group(1));
+//
+//        System.out.println(matcher.find());//false
+//        System.out.println(matcher.groupCount());//1
+
+//        System.out.println(Integer.MAX_VALUE);
+//        System.out.println((""+Integer.MAX_VALUE).length());//10
+//        System.out.println(Long.MAX_VALUE);
+//        System.out.println((""+Long.MAX_VALUE).length());//19
+//        System.out.println(Integer.TYPE);//int
+//        System.out.println(Integer.class);//class java.lang.Integer
+//        System.out.println(Integer.toHexString(123));//7b
+//        System.out.println(Integer.toBinaryString(8));//1000
+//        System.out.println(Integer.toOctalString(8));//10
+//        System.out.println(Integer.toString(-1));//-1
+//        System.out.println(Integer.toUnsignedString(-1));//4294967295
+//        System.out.println(Character.MIN_RADIX);//2
+//        System.out.println(Character.MAX_RADIX);//36
+
+//        System.out.println(Math.pow(2,16));//65536
+        //1  100=64+32+4  -> 0110 0100 ->   1 << 6 + 1<<5 + 1<<2
+//        Integer.parseInt("100");
+//        System.out.println(""+Integer.toString(Integer.MAX_VALUE,Character.MAX_RADIX).length());//6
+
+        //127 128-1 = 2^7 -1 = 1000 0000 -1 -> 111 1111
+        //0000...0001->
+//        System.out.println(Integer.numberOfLeadingZeros(-1));//0
+        //-0  1000...0000 -> 1111...1111-> 0000...0000
+//        Integer.MIN_VALUE 0x8000_0000
+//        System.out.println(Integer.numberOfLeadingZeros(Integer.MIN_VALUE));//0
+//        System.out.println(Integer.numberOfTrailingZeros(Integer.MIN_VALUE));//31
+//        System.out.println(Integer.rotateLeft(1,31));
+//        System.out.println(2 &1);//0
+//        System.out.println(3 &1);//1
+//        System.out.println(5 &1);//1
+
+        //-1 1000...0001 -> 1111...1110 -> 1111...1111
+
+//        System.setProperty("my.name","zzz");
+//        System.out.println(System.getProperties());
+//        System.out.println(System.getenv());
+//        System.out.println(System.getProperty("my.name"));
+
+//        System.out.println(MyTest.class.getClassLoader());
+//        System.out.println(Thread.currentThread().getContextClassLoader());
+//        System.out.println(ClassLoader.getSystemClassLoader());
+
+//        int[] ints=new int[]{};
+//        System.out.println(int.class);
+//        System.out.println(ints.getClass());
+//        System.out.println(ints.getClass().getName());
+//        System.out.println(ints.getClass().getClassLoader());
+//        assertNull(ints.getClass().getClassLoader());// null
+//        Integer[] integers=new Integer[0];
+//        System.out.println(integers.getClass());
+//        System.out.println(integers.getClass().getClassLoader());//null
+//        assertNull(integers.getClass().getClassLoader());
 
 //        System.out.println(-1 >>>2);
 //        System.out.println(-1 >>> 1);

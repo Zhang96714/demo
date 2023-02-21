@@ -2,18 +2,104 @@ package com.example.demo;
 
 import com.example.demo.common.PoJoObj;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+
 /**
  * @author: zhangguofen
  * @date: 2023/1/30 12:48
  */
 public class MyTest {
 
+    //一些字段
+    private final Object lock = new Object();
+
+
     /**
      * 测试
      */
     @Test
-    void test() throws Exception {
+    void test() {
+//        TreeSet
+//        HashSet
 
+//        int[] aInts=new int[1];
+//        System.out.println(aInts[0]);//default value 0
+//        double d=0,d1=0.0;
+//        System.out.println(d);//0.0
+//        System.out.println(d1);//0.0
+
+
+//        throwError();
+        int[] ints = {1, 2, 3};
+        Stream<Integer> integerStream = Arrays.stream(ints).boxed();
+//        System.out.println(integerStream.count());
+//        int v=integerStream.reduce((integer, integer2) -> integer+integer2).get();//sum
+//        int v=integerStream.mapToInt(Integer::intValue).sum();//sum
+//        System.out.println(v);
+//        integerStream.forEach(System.out::println);
+
+//        ArrayList<Integer> arrayList=new ArrayList<>();
+//        List<Integer> integerList=integerStream
+//                .collect(()-> arrayList,ArrayList::add, ArrayList::addAll);
+//        System.out.println(integerList.size());
+//        System.out.println(Float.BYTES);//4
+//        System.out.println(Integer.BYTES);//4
+
+//        System.out.println("\thello\tworld.");
+
+//        Thread.holdsLock();
+//        Thread.currentThread()
+
+//        synchronized (lock){
+//            assert Thread.holdsLock(lock);
+//
+//            synchronized (lock){
+//                System.out.println("hello");
+//            }
+//        }
+
+//        Throwable throwable;
+//        Error error;
+//        Exception exception;
+//
+//        Exception lowException=new Exception("low exception");
+//        Exception highException=new Exception("high exception", lowException);
+//        throw highException;
+//        highException.printStackTrace();
+
+//        A<String,Integer> aa=(a,a1)->{
+//            System.out.println(a+2*a1);
+//        };
+//        aa.func("a",1);
+//        B<Integer> bb=(b,b1)->{
+//            System.out.println(b*2+b1*3);
+//        };
+//        bb.func(1,2);
+
+//        //local class
+//        class DD{
+//            String f(Function<String,String> function){
+//                return function.apply("1");
+//            }
+//
+//        }
+//
+//        DD dd=new DD();
+//        Function<String,String> function=(s)->{
+//            return "1"+s;
+//        };
+//        System.out.println(dd.f(function));
+
+//        Consumer<Integer> consumer1=(a)->{
+//            System.out.println(a);
+//        };
+//        Consumer<Integer> consumer2=(b)->{
+//            System.out.println(b);
+//        };
+//        consumer1.andThen(consumer2).accept(1);
 
 //        String regex="(\\w)";
 //        String s=Pattern.quote(regex);
@@ -287,7 +373,7 @@ public class MyTest {
 //        System.out.println((char) 91);// [
     }
 
-    //---一些辅助方法
+    //一些辅助方法
     private void cloneTest() throws CloneNotSupportedException {
         PoJoObj field = new PoJoObj();
         field.setAnInt(555);
@@ -299,4 +385,33 @@ public class MyTest {
 //        System.out.println(copy);
     }
 
+    private void throwError() {
+        throw new TestError();
+    }
+
+    //类定义
+    interface A<T, R> {
+
+        void func(T t, R r);
+    }
+
+    /**
+     * @param <T>
+     */
+    interface B<T> extends A<T, T> {
+
+        default void bbb(Consumer<? super T> consumer, T value) {
+            consumer.accept(value);
+        }
+
+    }
+
+    static class TestError extends Error {
+
+        @Override
+        public String toString() {
+            String s;
+            return s = super.toString();
+        }
+    }
 }

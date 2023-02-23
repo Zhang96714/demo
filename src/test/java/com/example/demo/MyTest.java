@@ -3,9 +3,7 @@ package com.example.demo;
 import com.example.demo.common.PoJoObj;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.function.Consumer;
-import java.util.stream.Stream;
 
 /**
  * @author: zhangguofen
@@ -22,6 +20,34 @@ public class MyTest {
      */
     @Test
     void test() {
+//        assert 0==returnAdd();
+
+//        //iterate使用
+//        long sum=Stream.iterate(1,integer -> {
+//            return ++integer;
+//        }).limit(5).mapToInt(Integer::intValue).sum();
+//        System.out.println("count: "+sum);//15
+//        //generate使用
+//        Stream.generate(()-> 1).limit(1).forEach(System.out::println);//1
+
+//        System.out.println(String.format("v:%s",1));
+
+        //通配符.匹配一个
+        //限位符 + 1个或多个 ? 0个或1个 * 0个或多个
+        //补充
+        // 常用 \\w \\s \\d  大写表示取反
+//        String s = "ab.c";
+//        String regex = "b.";
+//        System.out.println(Arrays.toString(s.split(regex)));//[a,c]
+//        regex="b";
+//        System.out.println(Arrays.toString(s.split(regex)));//[a,.c]
+//        regex="b*";
+//        System.out.println(Arrays.toString(s.split(regex)));//[a, , ., c]
+//        regex="b?";
+//        System.out.println(Arrays.toString(s.split(regex)));//[a, , ., c]
+//        regex="b+";
+//        System.out.println(Arrays.toString(s.split(regex)));//[a, .c]
+
 //        TreeSet
 //        HashSet
 
@@ -33,8 +59,12 @@ public class MyTest {
 
 
 //        throwError();
-        int[] ints = {1, 2, 3};
-        Stream<Integer> integerStream = Arrays.stream(ints).boxed();
+//        int[] ints = {1, 2, 3};
+//        Stream<Integer> integerStream = Arrays.stream(ints).boxed();
+//        IntStream.of(4,5,6).peek(value -> {
+//            System.out.println(value);
+//        }).forEach(System.out::println);
+
 //        System.out.println(integerStream.count());
 //        int v=integerStream.reduce((integer, integer2) -> integer+integer2).get();//sum
 //        int v=integerStream.mapToInt(Integer::intValue).sum();//sum
@@ -387,6 +417,11 @@ public class MyTest {
 
     private void throwError() {
         throw new TestError();
+    }
+
+    private int returnAdd() {
+        int i = 0;
+        return i++;//0
     }
 
     //类定义

@@ -3,8 +3,14 @@ package com.example.demo;
 import com.example.demo.common.PoJoObj;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListResourceBundle;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * @author: zhangguofen
  * @date: 2023/1/30 12:48
@@ -20,6 +26,24 @@ public class MyTest {
      */
     @Test
     void test() {
+        assertTrue(true);
+
+        @SuppressWarnings("rawtypes")
+        List list = new ArrayList();
+        assertFalse(list.listIterator().hasPrevious());
+
+        MyResourceBundle resourceBundle = new MyResourceBundle();
+        System.out.println(resourceBundle.getString("hello"));
+
+//        MData<Integer> mData=new MData<>((Integer[]) null);
+//        int s=ForkJoinPool.getCommonPoolParallelism();
+//        System.out.println("getCommonPoolParallelism: "+s);//15
+
+//        System.out.println(1 << 10);//1024
+//        System.out.println(1 << 15);//32768
+//        System.out.println(1 << 16);//65536
+
+
 //        assert 0==returnAdd();
 
 //        //iterate使用
@@ -428,6 +452,48 @@ public class MyTest {
     interface A<T, R> {
 
         void func(T t, R r);
+
+        void func1(Supplier<T> supplier);
+    }
+
+    interface AA<T, R, T_S> extends A<T, R> {
+
+        void func1(T_S supplier);
+    }
+
+    interface AASupplier extends Supplier<String> {
+    }
+
+    static class AAImpl implements AA<Integer, String, AASupplier> {
+
+        @Override
+        public void func(Integer integer, String s) {
+
+        }
+
+        private Integer integer() {
+            try {
+
+                return null;
+            } catch (Exception e) {
+                failM();
+            }
+            throw new Error();//this cannot happen
+        }
+
+        void failM() {
+            throw new RuntimeException("");
+        }
+
+        @Override
+        public void func1(Supplier<Integer> supplier) {
+
+        }
+
+        @Override
+        public void func1(AASupplier supplier) {
+
+        }
     }
 
     /**
@@ -447,6 +513,32 @@ public class MyTest {
         public String toString() {
             String s;
             return s = super.toString();
+        }
+    }
+
+    static class MData<M> {
+        M[] data;
+
+        Object[] items;
+
+        public MData(M[] data) {
+            this.data = data;
+        }
+
+        @SuppressWarnings("unchecked")
+        public M[] getMItems() {
+            return (M[]) items;
+        }
+    }
+
+    static class MyResourceBundle extends ListResourceBundle {
+
+        @Override
+        protected Object[][] getContents() {
+            return new Object[][]{
+                    {"hello", "你好"},
+                    {"world", "世界"}
+            };
         }
     }
 }

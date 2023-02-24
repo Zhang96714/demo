@@ -3,14 +3,13 @@ package com.example.demo;
 import com.example.demo.common.PoJoObj;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ListResourceBundle;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * @author: zhangguofen
  * @date: 2023/1/30 12:48
@@ -20,20 +19,198 @@ public class MyTest {
     //一些字段
     private final Object lock = new Object();
 
+    public static void main(String[] args) {
+
+
+//        ClassLoader classLoader=MyTest.class.getClassLoader().getParent().getParent();
+//        assertNull(classLoader);
+    }
 
     /**
      * 测试
      */
     @Test
-    void test() {
+    void test() throws InterruptedException {
         assertTrue(true);
 
-        @SuppressWarnings("rawtypes")
-        List list = new ArrayList();
-        assertFalse(list.listIterator().hasPrevious());
+//        MyClassLoader myClassLoader = new MyClassLoader();
+//        try {
+//            Class<?> a= myClassLoader.loadClass("com.example.demo.MyTest$ObjectProvider");
+//            System.out.println(a.getClassLoader());//
+//            System.out.println(Class.forName("com.example.demo.MyTest$ObjectProvider")
+//                    .getClassLoader());//Launcher$AppClassLoader
 
-        MyResourceBundle resourceBundle = new MyResourceBundle();
-        System.out.println(resourceBundle.getString("hello"));
+//            System.out.println(MyTest.class.getClassLoader().getParent());//ExtClassLoader
+//
+//        } catch (ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+
+//        System.out.println(ObjectProvider.class.getName());//com.example.demo.MyTest$ObjectProvider
+
+
+//        ResourceBundle.Control control=new ResourceBundle.Control(){
+//
+//            /**
+//             * 设置 resourceBundle 保持时长，过期reload
+//             *
+//             * @param baseName
+//             *        the base name of the resource bundle for which the
+//             *        expiration value is specified.
+//             * @param locale
+//             *        the locale of the resource bundle for which the
+//             *        expiration value is specified.
+//             * @return
+//             */
+//            @Override
+//            public long getTimeToLive(String baseName, Locale locale) {
+//                if(baseName.equals("my")){
+//                    return 10;
+//                }
+//                return super.getTimeToLive(baseName, locale);
+//            }
+//        };
+//        ResourceBundle resourceBundle=ResourceBundle.getBundle("my",control);
+//        System.out.println(resourceBundle.getString("hello"));
+//        //ttl
+//        Thread.sleep(100);
+//        assertTrue(resourceBundle.containsKey("hello"));//true
+//
+//        ResourceBundle javaR=ResourceBundle.getBundle("com.example.demo.msg.MSG_SUCCESS");
+//        System.out.println(javaR.keySet().size());
+//        System.out.println(javaR.getString("success"));
+
+//        ClassLoader.getSystemResource().openConnection().setUseCaches(false);
+//        new HashMap<>().replace();//!=null || containsKey  存在
+//        //==null 覆盖
+//        //==null && !containsKey 不覆盖
+//        new HashMap<>().putIfAbsent();
+//        new HashMap<>().computeIfAbsent();
+
+//        Object o=new Object();
+//
+//        new Thread(){
+//            @Override
+//            public void run() {
+//                Thread.currentThread().interrupt();//self interrupt
+//                synchronized (o){
+//                    try {
+//                        o.wait();
+//                    } catch (InterruptedException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                }
+//            }
+//        }.run();
+
+//        Thread thread1=new Thread(){
+//            @Override
+//            public void run() {
+//                try {
+//                    synchronized (o){
+//                        o.wait();
+//                    }
+//                } catch (InterruptedException e) {
+//                    assertFalse(Thread.currentThread().isInterrupted());//interrupt flag has been clear
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        };
+//
+//        class MyThread extends Thread{
+//            final Thread thread;
+//
+//            public MyThread(Thread thread) {
+//                this.thread = thread;
+//            }
+//
+//            @Override
+//            public void run() {
+//                thread.interrupt();
+//            }
+//        }
+//
+//        //start
+//        thread1.start();
+//        new MyThread(thread1).start();
+
+
+//        //AppClassLoader -> ExtClassLoader->
+//        ClassLoader classLoader=MyTest.class.getClassLoader();
+//        System.out.println(classLoader);//AppClassLoader
+//        System.out.println(ClassLoader.getSystemClassLoader());//AppClassLoader
+//        ClassLoader pcl=classLoader.getParent();
+//        System.out.println(pcl);//ExtClassLoader
+//        pcl=pcl.getParent();
+//        System.out.println(pcl);//null 无法获取boot class loader?
+
+//        class MyTask implements Runnable{
+//
+//            public MyTask(ShareData shareData,boolean loop) {
+//                this.shareData = shareData;
+//                this.loopFlag=loop;
+//
+//                this.updateFlag=!loopFlag;
+//            }
+//
+//            private final ShareData shareData;
+//            private final boolean loopFlag;
+//            private final boolean updateFlag;
+//
+//            @Override
+//            public void run() {
+//                Thread thread=Thread.currentThread();
+//                String threadId="tid: "+Thread.currentThread().getId();
+//                //loop
+//                while (loopFlag && !thread.isInterrupted()){
+//                    printData(threadId);
+//
+//                    try {
+//                        Thread.sleep(10);
+//                    } catch (InterruptedException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                }
+//
+//                if(updateFlag){
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    //update sharedata
+//                    shareData.setaBoolean(true);
+//                    //show warn
+//                    printData(threadId,"updated.");
+//                }
+//            }
+//
+//            void printData(String threadId){
+//                System.out.println(threadId+" ,"+shareData);
+//            }
+//
+//            void printData(String threadId,String suffix){
+//                System.err.println(threadId+" ,"+shareData+" ,"+suffix);
+//            }
+//        }
+//        ShareData shareData=new ShareData();
+//        Runnable task1=new MyTask(shareData,false);
+//        Runnable task2=new MyTask(shareData,true);
+//        new Thread(task1).start();
+//
+//        //mock 100 thread to test
+//        for (int i = 0; i < 1000; i++) {
+//            new Thread(task2).start();
+//        }
+//
+//        Thread.sleep(1000);
+
+//        @SuppressWarnings("rawtypes")
+//        List list = new ArrayList();
+//        assertFalse(list.listIterator().hasPrevious());
+//
+//        MyResourceBundle resourceBundle = new MyResourceBundle();
+//        System.out.println(resourceBundle.getString("hello"));
 
 //        MData<Integer> mData=new MData<>((Integer[]) null);
 //        int s=ForkJoinPool.getCommonPoolParallelism();
@@ -448,6 +625,17 @@ public class MyTest {
         return i++;//0
     }
 
+    private ClassLoader getCl(ClassLoader c) {
+        if (null == c) {
+            return null;
+        }
+        ClassLoader p;
+        while ((p = c.getParent()) != null) {
+            c = p;
+        }
+        return c;
+    }
+
     //类定义
     interface A<T, R> {
 
@@ -539,6 +727,97 @@ public class MyTest {
                     {"hello", "你好"},
                     {"world", "世界"}
             };
+        }
+    }
+
+    static class ShareData {
+        private volatile boolean aBoolean;// volatile 保证内存可见性
+//        private  boolean aBoolean;
+
+        private String name;
+
+        private int hash;//0
+
+        public void setName(String name) {
+            if (!name.equals(this.name)) {
+                this.name = name;
+                calculateHash();
+            }
+        }
+
+        void calculateHash() {
+            this.hash = Objects.hash(name);
+        }
+
+        @Override
+        public int hashCode() {
+            return hash;
+        }
+
+        public synchronized boolean isaBoolean() {
+            return aBoolean;
+        }
+
+        public synchronized void setaBoolean(boolean aBoolean) {
+            this.aBoolean = aBoolean;
+        }
+
+        @Override
+        public String toString() {
+            return "aBoolean: " + aBoolean;
+        }
+    }
+
+    static class ObjectProvider {
+
+        ObjectProvider provider = null;
+
+        Object get() {
+            ObjectProvider objectProvider;
+            for (objectProvider = provider;
+                 objectProvider != null;
+                 objectProvider = getFallbackProvider()) {
+                Object v = objectProvider.get();
+                if (v != null) {
+                    return v;
+                }
+            }
+
+            return null;
+        }
+
+        /**
+         * 提供备用的 ObjectProvider 对象
+         *
+         * @return o
+         */
+        ObjectProvider getFallbackProvider() {
+            return null;
+        }
+
+    }
+
+    static class MyClassLoader extends ClassLoader {
+
+        //ext loader
+        private static final ClassLoader c;
+
+        static {
+            ClassLoader t = ClassLoader.getSystemClassLoader();
+            ClassLoader p;
+            while ((p = t.getParent()) != null) {
+                t = p;
+            }
+            c = t;
+        }
+
+        public static ClassLoader getC() {
+            return c;
+        }
+
+        @Override
+        public Class<?> loadClass(String name) throws ClassNotFoundException {
+            return c.loadClass(name);
         }
     }
 }

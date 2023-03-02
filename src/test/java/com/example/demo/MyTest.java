@@ -33,6 +33,207 @@ public class MyTest {
     void test() throws InterruptedException {
         assertTrue(true);
 
+
+////        System.out.println((int) 'a');//97
+//
+//        ByteBuffer buffer = ByteBuffer.allocate(10);
+//        //write
+//        buffer.putChar('a');
+//
+//        //char 'b'
+//        buffer.put((byte) 0);
+//        buffer.put((byte) 98);
+//
+//        //int 9
+//        buffer.put((byte) 0);
+//        buffer.put((byte) 0);
+//        buffer.put((byte) 0);
+//        buffer.put((byte) 9);
+//
+//        //test
+//        assertFalse(buffer.isReadOnly());
+//        assertFalse(buffer.isDirect());
+//        assertTrue(buffer.hasArray());
+//        assertEquals(0,buffer.arrayOffset());
+//
+//        //read
+//        buffer.flip();
+//        assertEquals('a',buffer.getChar());
+//        assertEquals('b',buffer.getChar());
+////        assertEquals('b',buffer.getChar(2));//note this position not modify attention
+//
+////        System.out.println(buffer.position());
+////        System.out.println(buffer.getInt());
+//        assertEquals(9,buffer.getInt());
+
+        //bytes
+//        System.out.println(Byte.BYTES);//1
+//        System.out.println(Character.BYTES);//2
+//        System.out.println(Short.BYTES);//2
+//        System.out.println(Integer.BYTES);//4
+//        System.out.println(Long.BYTES);//8
+//        System.out.println(Float.BYTES);//4
+//        System.out.println(Double.BYTES);//8
+
+//        System.out.println(0x0102030405060708L);
+
+//        assert false;
+
+//        Files
+        //list files
+//        String dir="C:\\Users\\zhangguofen\\IdeaProjects\\demo\\src\\main\\resources";
+//        try(
+//                DirectoryStream<Path> directoryStream=Files.newDirectoryStream(Paths.get(dir),"*.properties")
+//                ) {
+//            for (Path p:directoryStream) {
+//                System.out.println(p+"type: "+Files.probeContentType(p)+"is file:"+Files.isRegularFile(p));
+//            }
+//
+//        }catch (IOException e){
+//
+//        }
+
+//        System.out.println(0xffff_ffff_ffff_ffffL);//-1
+//        String filePath = "C:\\Users\\zhangguofen\\IdeaProjects\\demo\\src\\main\\resources\\file";
+//        Path file = Paths.get(filePath);
+//        System.out.println("getFileName: " + file.getFileName());
+//        System.out.println("getParent: " + file.getParent());
+//        System.out.println("getRoot " + file.getRoot());
+//        System.out.println("isAbsolute: " + file.isAbsolute());
+//        System.out.println("getNameCount:" + file.getNameCount());//8
+//        System.out.println("0: " + file.getName(0));//users
+//        System.out.println("7: " + file.getName(7));//file
+//        file=file.subpath(3,8);
+//        assertFalse(file.startsWith("fi"));//注意格式 相对路径不能直接比较
+//        assertTrue(file.endsWith("file"));//完整名称 file
+//        System.out.println("next: " + file.iterator().next());//users
+//
+//        Path file1 = Paths.get("./file");
+//        System.out.println(file1);
+//        System.out.println(file1.normalize());
+
+        //watchable listen modify event
+//        Path file=Paths.get("C:\\Users\\zhangguofen\\IdeaProjects\\demo\\src\\main\\resources");
+//        FileSystem fileSystem = FileSystems.getDefault();
+//        System.out.println(fileSystem);//WindowsFileSystem
+//        System.out.println(fileSystem.getSeparator());//\
+//        System.out.println(fileSystem.getFileStores().iterator().next());//disk
+//        try (
+//                WatchService watchService = fileSystem.newWatchService();
+//        ) {
+//            WatchKey watchKey = file.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
+//            boolean valid=watchKey.isValid();
+//            while (valid){
+//                List<WatchEvent<?>> watchEvents=watchKey.pollEvents();
+//                if(!watchEvents.isEmpty()){
+//                    for (WatchEvent<?> event:watchEvents
+//                    ) {
+//                        WatchEvent.Kind<?> kind=event.kind();
+//                        System.out.println("event kind: "+kind.name());
+//
+//                    }
+//                }else {
+//                    System.out.println("nothing happen");
+//                }
+//                valid=watchKey.reset();//reset
+//                if(!valid){
+//                    System.out.println("watchkey no longer valid.");
+//                    break;
+//                }
+//                Thread.sleep(2000);
+//            }
+//
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
+//        System.out.println(0%5);//0
+//        System.out.println(1%5);//1
+//        //...
+//        System.out.println(4%5);//4
+//        //0
+//        System.out.println(5%5);//0
+
+//        long l=127 & 0xffL;
+//        System.out.println("l: "+l);
+//        int[] ints=new int[1];
+//        System.out.println(ints[0]);//0 数组默认初始值0
+
+        //0001...0000
+//        int i=1 << 28;
+//        System.out.println(i >>> 26);//4
+//        System.out.println(i >>> -6);//i >>> -6 = i >>> 26
+//
+//        long mask= 0xffff_ffff_ffff_ffffL;
+//        System.out.println(mask << 4);//1 1111...0000 ->1 01111->1 10000=-16
+//        System.out.println(mask >>> -4);//15
+//        System.out.println(mask >>> 60);//15
+
+//        System.out.println(1 ^ 0);//零 1
+//        System.out.println(1 ^ 1);//自身 0
+
+//        int a=1,b=2;
+//        a=a^b;
+//        b=a^b;//b=a
+//        a=a^b;//a=b
+//        assertEquals(2,a);
+//        assertEquals(1,b);
+//        System.out.println(5 &5);//5
+//        System.out.println(4 &5);//4
+//        System.out.println(3 &5);//1
+//        System.out.println(2 &5);//0
+//        System.out.println(1 &5);//1
+//        System.out.println(0 &5);//0
+        //-1 &5 =5
+        //-2 &5=4
+        //-3 &5=3
+        //-4 &5=2
+        //-5 &5=1
+        //-6 &5=0
+        //-7 &5==1
+
+//        int i=0;
+//        out:while (true){
+//            if(i++<5){
+//                System.out.println("i: "+i);
+//            }else {
+//                break ;
+//            }
+//            for (int j = 0; j < 10; j++) {
+//                int randomInt=new Random().nextInt(10);
+//                if( randomInt == 9){
+//                    System.out.println(" end.");
+//                    break out;
+//                }
+//                System.out.print(" j: "+j);
+//                if(j==9){
+//                    //last line
+//                    System.out.println();
+//                }
+//            }
+//        }
+
+//        PriorityQueue<Integer> priorityQueue=new PriorityQueue<>();
+//        priorityQueue.add(3);
+//        priorityQueue.offer(2);
+//        priorityQueue.add(1);
+//        priorityQueue.remove();
+//        priorityQueue.add(1);
+//        priorityQueue.poll();
+//
+//        assertEquals(2,priorityQueue.element());
+//        assertEquals(2,priorityQueue.peek());
+//
+//        Collection<Integer> integers=new ArrayList<>();
+//        integers.add(1);
+//        Collection<Integer> integers1= Arrays.asList(1,2,3);
+//        boolean b=integers.retainAll(integers1);//false for no changed
+//        assertFalse(b);
+//        assertEquals(1,integers.size());
+
+//        Iterator
+
 //        MyClassLoader myClassLoader = new MyClassLoader();
 //        try {
 //            Class<?> a= myClassLoader.loadClass("com.example.demo.MyTest$ObjectProvider");
@@ -738,6 +939,8 @@ public class MyTest {
 
         private int hash;//0
 
+        String p;
+
         public void setName(String name) {
             if (!name.equals(this.name)) {
                 this.name = name;
@@ -765,6 +968,25 @@ public class MyTest {
         @Override
         public String toString() {
             return "aBoolean: " + aBoolean;
+        }
+
+        private static class InnerD {
+
+            private static final InnerD d = doInit();
+
+            private static InnerD doInit() {
+                //init operate
+
+                return null;
+            }
+
+            void m() {
+
+                //访问上级private 变量 hash
+//                ShareData.this.hash;
+                //访问上级 普通变量 p
+//                p.length()
+            }
         }
     }
 

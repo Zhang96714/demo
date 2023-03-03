@@ -34,6 +34,74 @@ public class MyTest {
         assertTrue(true);
 
 
+//        EnumMap<COLOR,String> enumMap=new EnumMap<>(COLOR.class);
+//        System.out.println(enumMap.size());
+//        enumMap.put(COLOR.RED,"red");//size+1
+//        assertNull(enumMap.get(COLOR.BLACK));
+//        assertEquals("red",enumMap.get(COLOR.RED));
+//        System.out.println(enumMap.size());//1
+//        assertEquals(1,enumMap.size());
+//
+//        int[] ints={1,2,3};
+//        int[] ints1=ints.clone();//clone
+//        assertNotEquals(ints1,ints);
+//
+//        System.out.println(COLOR.RED);
+//        System.out.println(COLOR.class);
+//        System.out.println(COLOR.RED.getDeclaringClass());
+
+//        System.out.println(EA.EA.getDeclaringClass());
+//        System.out.println(EA.EA.getClass().getSuperclass());//class com.example.demo.EA
+//        System.out.println(EB.EB.getDeclaringClass());
+//        System.out.println(EB.EB.getClass().getSuperclass());//class java.lang.Enum
+//        System.out.println(EA.EA.getClass());
+
+//        COLOR.valueOf("123");//not exist
+
+
+//        assertEquals(COLOR.class,COLOR.RED.name());
+
+//        do{
+//
+//        }while (true);
+
+//        Hashtable<String,Integer> hashtable=new Hashtable<>();
+//        hashtable.keySet();
+//        hashtable.elements();
+
+//        Map<String,Integer> stringIntegerMap=new HashMap<>();
+//        //get
+//        stringIntegerMap.get("1");
+//        stringIntegerMap.getOrDefault("1",1);
+//        //replace
+//        stringIntegerMap.replaceAll((s, integer) -> {
+//            return 1;
+//        });
+//        stringIntegerMap.replace("1",1);
+//        stringIntegerMap.replace("1",1,11);
+//        //remove
+//        stringIntegerMap.remove("1");
+//        //put
+//        stringIntegerMap.put("1",1);
+//        stringIntegerMap.putIfAbsent("1",1);//get(key) == null
+//        //compute
+//        stringIntegerMap.compute("1",(s, integer) -> {
+//            return 1;
+//        });
+//        stringIntegerMap.computeIfAbsent("1",s -> {
+//            return 1;
+//        });//get(key) == null
+//        stringIntegerMap.computeIfPresent("1",(s, integer) -> {
+//            return 1;
+//        });//get(key) != null
+//        //merge
+//        stringIntegerMap.merge("1",0,(integer, integer2) -> 1);
+
+//        Comparable<Integer> comparable=(Comparable<Integer> & Serializable)(o -> {
+//            return 1;
+//        });
+//        assertTrue(comparable instanceof Serializable);
+
 ////        System.out.println((int) 'a');//97
 //
 //        ByteBuffer buffer = ByteBuffer.allocate(10);
@@ -1017,6 +1085,15 @@ public class MyTest {
             return null;
         }
 
+    }
+
+    enum COLOR {
+        RED,
+        BLACK
+    }
+
+    public interface MarkI {
+        //no use
     }
 
     static class MyClassLoader extends ClassLoader {

@@ -33,6 +33,76 @@ public class MyTest {
     void test() throws InterruptedException {
         assertTrue(true);
 
+//        TreeMap<String,Integer> treeMap=new TreeMap<>();
+//        //add 3 elements for test
+//        treeMap.put("a",1);
+//        treeMap.put("b",2);
+//        treeMap.put("c",3);
+//        assertTrue(treeMap.containsKey("a"));
+//        //first
+//        assertEquals("a",treeMap.firstKey());
+//        //last
+//        assertEquals("c",treeMap.lastKey());
+//
+//        //***NOTE*** ceiling and higher for least keys
+//        //ceiling
+//        assertEquals("a",treeMap.ceilingKey("a"));
+//        //higher
+//        assertEquals("b",treeMap.higherKey("a"));
+//
+//        //***NOTE*** floor and lower for greater keys
+//        //floor
+//        assertEquals("c",treeMap.floorKey("c"));
+//        //lower
+//        assertEquals("b",treeMap.lowerKey("c"));
+
+//        LinkedHashMap<String,Integer> linkedHashMap1=new LinkedHashMap<>();
+//        linkedHashMap1.put("1",1);
+//        linkedHashMap1.put("2",2);
+//        linkedHashMap1.put("3",3);
+//        linkedHashMap1.values().forEach(integer -> System.out.println("v:"+integer));//ordered
+
+//        LinkedHashMap<String,Integer> linkedHashMap=new LinkedHashMap<>(8,0.75f,true);
+//        linkedHashMap.put("a",1);
+//        assertTrue(linkedHashMap.containsKey("a"));
+//        linkedHashMap.put("b",2);
+//        //new key iterator
+//        Iterator<String> iterator=linkedHashMap.keySet().iterator();
+//        assertEquals("a",iterator.next());
+//
+//        //do get operator
+//        linkedHashMap.get("a");
+//        linkedHashMap.get("a");
+//        linkedHashMap.get("a");
+//        linkedHashMap.get("a");
+//        linkedHashMap.get("a");
+//
+////        assertEquals("b",iterator.next());//cause cme
+//        //new value Iterator
+//        Iterator<Integer> vIterator=linkedHashMap.values().iterator();
+//        assertEquals(2,vIterator.next());
+
+//        Objects.hash()
+//        IdentityHashMap<String,Integer> identityHashMap=new IdentityHashMap<>();
+//        System.out.println("1".hashCode());
+//        System.out.println("11".hashCode());
+//        identityHashMap.put("1",1);
+//        assertTrue(identityHashMap.containsKey("1"));
+//
+//        Object o=new Object();
+//        System.out.println("o.hashCode: "+o.hashCode());
+//        System.out.println("System.identityHashCode: "+System.identityHashCode(o));
+//        System.out.println(new Object().hashCode());
+
+//        WeakHashMap<String,Integer> weakHashMap=new WeakHashMap<>();
+//        weakHashMap.put("a",1);
+//        assertTrue(weakHashMap.containsKey("a"));
+//
+//        Iterator<String> iterator=weakHashMap.keySet().iterator();//get iterator
+//        assertTrue(iterator.hasNext());
+//        weakHashMap.remove("a");
+////        assertTrue(iterator.hasNext());//
+//        iterator.next();//throw cme
 
 //        EnumMap<COLOR,String> enumMap=new EnumMap<>(COLOR.class);
 //        System.out.println(enumMap.size());

@@ -33,6 +33,181 @@ public class MyTest {
     void test() throws InterruptedException {
         assertTrue(true);
 
+//        OptionalInt optionalInt=OptionalInt.empty();
+//        assertFalse(optionalInt.isPresent());
+
+//        Boolean.hashCode();//true?1231 : 1237
+//        Byte.hashCode();//(int)v
+//        Character.hashCode();//(int)c
+//        Short.hashCode()//(int)v
+//        Integer.hashCode()//v
+//        Long.hashCode()//v ^ (v >>>32)
+//
+//        Float.hashCode()//floatToIntBits
+//        Double.hashCode();//doubleToLongBits  b ^ (b >>> 32)
+
+        //interger
+//        Integer.parseInt();
+//        Integer.valueOf();//use cache
+//        Integer.rotateLeft();// i << k | i >>> -k
+//        Integer.rotateRight()//i >>> k | i << -k
+//        Integer.reverseBytes();
+//        Integer.reverse()
+//        System.out.println(Integer.reverse(1));//-2147483648=Integer.MAX_VALUE+1
+//        System.out.println(Integer.MAX_VALUE+1);
+//        System.out.println(Integer.reverse(0));//0
+
+        //boolean
+//        Boolean.logicalAnd();
+//        System.out.println(Boolean.class);//class java.lang.Boolean
+//        System.out.println(Boolean.TYPE);//boolean
+
+        //byte
+//        Byte.parseByte()
+
+        //character
+//        Character.isSurrogate();
+        System.out.println(Character.isSurrogate("龍".toCharArray()[0]));//false
+//        Character.isLetter();
+//        Character.isLowerCase();
+
+
+        //short
+//        Short.reverseBytes()
+
+        //long
+//        Long.hashCode();
+
+        //double
+//        Double.doubleToLongBits();
+//        Double.doubleToRawLongBits();
+//        Double.isFinite();
+//        Double.isInfinite();
+//        Double.longBitsToDouble();
+//        double d=0.0d;
+
+//        BigDecimal.valueOf(1);
+//        BigInteger.ZERO
+
+//        Double.compare();
+//        Double.max();
+//        Double.NaN;//0x7ff8000000000000L;
+//        Double.isNaN();//v != v
+
+        //java.lang.NumberFormatException: Illegal leading minus sign on unsigned string -1
+//        System.out.println(Integer.parseUnsignedInt("-1"));
+
+//        Optional<Integer> optionalInteger=Optional.empty();
+//        assertEquals(1,optionalInteger.orElse(1));
+//        optionalInteger.filter(integer -> integer>5).orElseThrow(()-> new RuntimeException("a"));
+//        System.out.println(optionalInteger.filter(integer -> integer>5));
+//        Optional.empty().orElseThrow(RuntimeException::new);
+//        .orElseThrow(()->new RuntimeException("not exits"));
+//        List<Integer> arrayList=Arrays.asList(1,2,3,4);
+//        ListIterator<Integer> listIterator=arrayList.listIterator();
+//        listIterator.next();
+//        listIterator.next();
+//        assertEquals(2,listIterator.previous());
+
+
+//        new TreeMap<>().put("key",null); // allow null value
+//        System.out.println("~(-1): "+(~-1));//0
+//        System.out.println(~-2);//1
+//
+//        System.out.println(63 >>6);//0
+//        System.out.println(64 >>6);//1
+//        //32
+//        System.out.println(-1 >>> -2);//3
+//        System.out.println(-1 >>> -(2+32));//3
+
+//        arrFunc(1,2,3);
+//        int[] a={1,2,3};
+//        arrFunc(a);
+//        arrFunc1(new int[]{1,2,3});
+
+//        HashSet<Integer> set=new HashSet<>(Arrays.asList(1,3,2));
+//        set.iterator().forEachRemaining(System.out::println);//out: 1 2 3
+//        System.out.println(set.iterator().next());
+//        System.out.println(set.iterator().next());
+//        set.iterator().next();
+//        assertEquals(1,set.iterator().next());
+//        TreeSet<Integer> treeSet=new TreeSet<>(Arrays.asList(1,3,2));
+//        treeSet.iterator().forEachRemaining(System.out::println);//out: 1 2 3
+
+//        EnumSet<EA> enumSet=EnumSet.noneOf(EA.class);
+//        assertEquals(0,enumSet.size());
+//        assertFalse(( null instanceof MyTest));
+////        MyTest.class.cast()
+//
+//        assertEquals(3,EnumSet.range(EA.EA,EA.ED).size());//[from,to]
+//
+//        EnumSet<EB> enumSet0=EnumSet.of(EB.EB);
+//        EnumSet<EB> enumSet1=EnumSet.complementOf(enumSet0);//剩余部分
+//        assertEquals(1,enumSet1.size());
+//        assertEquals(EB.EB1,enumSet1.iterator().next());//true
+//
+//        assertEquals(2,Integer.numberOfTrailingZeros(4));//0100=4
+//
+//        //i & -i
+//        System.out.println(1 & -1);//1
+//        System.out.println(2 & -2);//2
+//        System.out.println(3 & -3);//1
+//        System.out.println(4 & -4);//4
+//        System.out.println(5 & -5);//1
+//        System.out.println(6 & -6);//2
+
+        //i & -i
+//        assertEquals(2,Integer.lowestOneBit(2));
+//        assertEquals(1,Integer.lowestOneBit(3));
+//        assertEquals(2,Integer.highestOneBit(3));
+
+//        System.out.println(Integer.lowestOneBit(-1));//1
+//        System.out.println(Integer.highestOneBit(-1));//-2147483648
+
+//        Integer.numberOfTrailingZeros();
+//        Integer.numberOfLeadingZeros();
+//        Integer.bitCount();
+//        Integer.highestOneBit();
+//        Integer.lowestOneBit();
+
+//        Integer.getInteger();//get property
+
+
+//        new IllegalStateException()
+//        new IllegalArgumentException()
+
+//        NavigableSet<Integer> navigableSet=new TreeSet<>(Arrays.asList(1,2,3));
+//        assertEquals(1,navigableSet.floor(1));
+//        assertEquals(1,navigableSet.lower(2));
+//        assertEquals(3,navigableSet.ceiling(3));
+//        assertEquals(3,navigableSet.higher(2));
+//        navigableSet=navigableSet.headSet(2,false);
+//        assertEquals(1,navigableSet.size());
+
+
+//        int[] ints={1,2,3};
+//        IntConsumer intConsumer= value -> System.out.println("value: "+value);
+//        Spliterator.OfInt ofInt=Spliterators.spliterator(ints,Spliterator.DISTINCT);
+//        Spliterator.OfInt ofInt1=ofInt.trySplit();
+//
+//        System.out.println("partition1 size: "+ofInt.estimateSize());
+////        System.out.println(ofInt.estimateSize());
+//        ofInt.forEachRemaining(intConsumer);
+////        System.out.println(ofInt1.estimateSize());
+//        System.out.println("partition2 size: "+ofInt1.estimateSize());
+//        ofInt1.forEachRemaining(intConsumer);
+
+//        //null 1 2 3
+//        Comparator<Integer> integerComparator=Comparator.nullsFirst(Comparator.naturalOrder());
+//        Integer[] integers={null,1,2,3};
+//        Arrays.sort(integers,integerComparator);//null 1 2 3
+//        assertNull(integers[0]);
+//        integerComparator=integerComparator.reversed();
+//        Arrays.sort(integers,integerComparator);//3 2 1 null
+//        assertNull(integers[3]);
+
+//        System.out.println(new Object());
+
 //        TreeMap<String,Integer> treeMap=new TreeMap<>();
 //        //add 3 elements for test
 //        treeMap.put("a",1);
@@ -973,6 +1148,14 @@ public class MyTest {
             c = p;
         }
         return c;
+    }
+
+    void arrFunc(int... ints) {
+
+    }
+
+    void arrFunc1(int[] ints) {
+
     }
 
     //类定义

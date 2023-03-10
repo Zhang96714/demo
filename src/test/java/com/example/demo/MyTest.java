@@ -33,6 +33,61 @@ public class MyTest {
     void test() throws InterruptedException {
         assertTrue(true);
 
+//        List<Integer> list=new ArrayList<>();
+//        list.add(6);list.add(1);list.add(2);list.add(3);
+//        Collections.sort(list);
+//        assertEquals(1,list.get(0));// 1 2 3 6
+//        int i=Collections.binarySearch(list,5);
+//        System.out.println("i: "+i);
+//
+//        Collections.unmodifiableCollection();
+//        Collections.synchronizedCollection();
+
+//        ByteBuffer.wrap();
+//        ByteBuffer.allocate(2);
+
+//        ByteBuffer buffer=ByteBuffer.allocate(2);
+//        buffer.put((byte) 1);
+//
+//        //read
+//        buffer.flip();
+//        System.out.println(buffer.position()+"");
+//        System.out.println();
+//        System.out.println("v: "+buffer.get());
+
+//        //get or put
+//        buffer.get();
+//        buffer.getInt();
+//        buffer.put();
+//        buffer.putInt();
+//        //query
+//        buffer.position();
+//        buffer.limit();
+//        buffer.capacity();
+//        buffer.remaining();
+//        //as
+//        buffer.asCharBuffer();
+//        //create
+//        buffer.slice();//remaining
+//        buffer.compact();
+//        buffer.duplicate();//copy
+
+//        Integer[] ints={1,2,3};
+//        int dh=Arrays.deepHashCode(ints);
+//        System.out.print("dh: "+dh);
+
+//        Arrays.deepToString()
+//        Arrays.deepEquals()
+//        Arrays.spliterator()
+//        Arrays.stream();
+
+//        int[] ints={3,2,1};
+//        m1(ints);
+//        System.out.printf(Arrays.toString(ints));
+//        m2(ints);
+//        System.out.println();
+//        System.out.printf(Arrays.toString(ints));
+
 //        OptionalInt optionalInt=OptionalInt.empty();
 //        assertFalse(optionalInt.isPresent());
 
@@ -67,7 +122,7 @@ public class MyTest {
 
         //character
 //        Character.isSurrogate();
-        System.out.println(Character.isSurrogate("龍".toCharArray()[0]));//false
+//        System.out.println(Character.isSurrogate("龍".toCharArray()[0]));//false
 //        Character.isLetter();
 //        Character.isLowerCase();
 
@@ -1158,6 +1213,35 @@ public class MyTest {
 
     }
 
+    void m1(int[] arr) {
+        //从左到右
+        for (int i = 0; i < arr.length; i++) {
+            //> 0
+            for (int j = i; j > 0; j--) {
+                if (arr[j - 1] > arr[j])
+                    m_swap(arr, j);
+            }
+        }
+    }
+
+    void m2(int[] arr) {
+        int n = arr.length;
+        //从右到左
+        for (int i = 0; i < n; i++) {
+            for (int j = n - i; j < n; j++) {
+                if (arr[j - 1] < arr[j])
+                    m_swap(arr, j);
+            }
+        }
+    }
+
+    void m_swap(int[] arr, int j) {
+        //arr[j-1],arr[j]
+        arr[j - 1] = arr[j - 1] ^ arr[j];
+        arr[j] = arr[j - 1] ^ arr[j];
+        arr[j - 1] = arr[j - 1] ^ arr[j];
+    }
+
     //类定义
     interface A<T, R> {
 
@@ -1311,6 +1395,20 @@ public class MyTest {
         }
     }
 
+    /**
+     * {@code hello.call();}
+     *
+     * <ul>
+     * <li>
+     * <p>
+     *     p1
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     *     {@link ShareData d}
+     * </p>
+     */
     static class ObjectProvider {
 
         ObjectProvider provider = null;

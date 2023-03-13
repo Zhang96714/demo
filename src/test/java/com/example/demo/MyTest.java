@@ -3,11 +3,18 @@ package com.example.demo;
 import com.example.demo.common.PoJoObj;
 import org.junit.jupiter.api.Test;
 
+import java.io.Serializable;
 import java.util.ListResourceBundle;
 import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.LockSupport;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -22,6 +29,34 @@ public class MyTest {
     public static void main(String[] args) {
 
 
+//        System.out.println(Thread.currentThread().isDaemon());//false
+
+//        Thread thread=new Thread(){
+//            @Override
+//            public void run() {
+//                while (true){
+//
+//                }
+//            }
+//        };
+//        thread.setDaemon(true);
+//        thread.start();
+//
+//        Thread thread1=new Thread(){
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                System.out.println("t1");
+//            }
+//        };
+//
+//        thread1.start();
+
+
 //        ClassLoader classLoader=MyTest.class.getClassLoader().getParent().getParent();
 //        assertNull(classLoader);
     }
@@ -32,6 +67,193 @@ public class MyTest {
     @Test
     void test() throws InterruptedException {
         assertTrue(true);
+
+
+        assertTrue(MyClassLoader.class.isMemberClass());
+
+        System.out.println(Integer.MAX_VALUE);
+        assertFalse(Thread.holdsLock(new Object()));//false
+        Object o = new Object();
+        synchronized (o) {
+            assertTrue(Thread.holdsLock(o));
+        }
+
+//        FIFOMutex fifoMutex=new FIFOMutex();
+//        for (int i = 0; i < 10; i++) {
+//            String threadName="thread-"+i;
+//            new Thread(threadName){
+//                @Override
+//                public void run() {
+//                    fifoMutex.lock();
+//                    try {
+//                        System.out.println(getName());
+//                    }finally {
+//                        fifoMutex.unLock();
+//                    }
+//
+//                }
+//            }.start();
+//        }
+
+//        ReadWriteLock readWriteLock=new ReentrantReadWriteLock();
+//        Runnable runnable=()->{
+//            doWithReadLock(readWriteLock.readLock());
+//        };
+//        Runnable runnable1=()->{
+//            doWithWriteLock(readWriteLock.writeLock());
+//        };
+//        //test read lock
+//        for (int i = 0; i < 5; i++) {
+//            new Thread(runnable).start();
+//        }
+//        Thread.sleep(10*1000);
+
+        //test write lock
+//        for (int i = 0; i < 5; i++) {
+//            new Thread(runnable1).start();
+//        }
+//        Thread.sleep(10*1000);
+
+//        Queue
+//        new AtomicBoolean().compareAndSet()
+//        Thread.sleep();
+//
+//        Object cObject = new Object();
+//        //pLock 用于生产
+//        Object pLock = new Object();
+//        //cLock 用于消费
+//        Object cLock = new Object();
+//
+//        Object[] items = new Object[10];
+//        final int[] ss = {0};//size
+//        //生产线程
+//        Thread pThread = new Thread() {
+//            @Override
+//            public void run() {
+//                while (true) {
+////                    System.out.println("1");
+////                    synchronized (o){
+//                    while (ss[0] == items.length) {
+//                        try {
+//                            synchronized (cLock) {
+//                                cLock.wait();
+//                            }
+//
+//                        } catch (InterruptedException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+////                        System.out.println("2");
+//                    synchronized (pLock) {
+//                        System.out.println(Thread.currentThread().getName() + " p v");
+//
+//                        items[ss[0]] = "a";
+//                        if (++ss[0] == items.length) {
+//                            ss[0] = 0;
+//                        }
+//
+//                        //do notify
+//                        pLock.notify();
+////                            System.out.println("aa");
+//                    }
+//
+////                    }
+////                    System.out.println("aaa");
+//
+//                    //control p rate
+//                    try {
+//                        Thread.sleep(200);
+//                    } catch (InterruptedException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//
+//                }
+//
+//            }
+//        };
+//
+//        pThread.start();
+//
+//        //消费线程
+//        Thread cThread = new Thread() {
+//            @Override
+//            public void run() {
+//                while (true) {
+//
+//                    synchronized (cObject) {
+//                        while (ss[0] == 0) {
+//                            synchronized (pLock) {
+//                                try {
+//                                    System.out.println(Thread.currentThread().getName() + " wait");
+//                                    pLock.wait();
+//                                } catch (InterruptedException e) {
+//                                    throw new RuntimeException(e);
+//                                }
+//                            }
+//                        }
+//                        synchronized (cLock) {
+//                            try {
+//                                //c cost
+//                                Thread.sleep(50);
+//                            } catch (InterruptedException e) {
+//                                throw new RuntimeException(e);
+//                            }
+//                            System.out.println(Thread.currentThread().getName() + ",ss[0]" + ss[0] + ", consumer value: " + items[0]);
+//                            ss[0]--;
+//
+//                            //do notify
+//                            cLock.notify();
+////                            System.out.println("dd");
+//                        }
+//                    }
+////                    }
+//
+////                    System.out.println("ddd");
+//                }
+//
+//
+//            }
+//        };
+//
+//        //create  cThread
+//        new Thread(cThread).start();
+//        new Thread(cThread).start();
+//        new Thread(cThread).start();
+//
+//        //wait 10s to watch
+//        Thread.sleep(2000);
+
+//        System.out.println(new Date().getTime());//1678686807503 13
+//        System.out.println(new Date().getTime()/1000);
+
+//        TimerTask task=new TimerTask() {
+//            @Override
+//            public void run() {
+//                System.out.println("hello:"+System.currentTimeMillis());
+//            }
+//        };
+//
+//        Timer timer=new Timer();
+//        timer.schedule(task,2000,1000);//delay
+//        Thread.sleep(5000);
+
+//        synchronized (lock){
+//            //wait 2s
+//            lock.wait(2000);
+//            System.out.println("run");
+//        }
+
+//        SortedSet<MyTask> myTasks=new TreeSet<>();
+//        MyTask task1=new MyTask(1);
+//        MyTask task2=new MyTask(11);
+//        myTasks.add(task2);myTasks.add(task1);
+//        assertEquals(task1,myTasks.first());
+
+//        synchronized (lock){
+//            synchronized (lock){
+//                System.out.println("get lock.");
+//            }
+//        }
 
 //        List<Integer> list=new ArrayList<>();
 //        list.add(6);list.add(1);list.add(2);list.add(3);
@@ -1242,6 +1464,37 @@ public class MyTest {
         arr[j - 1] = arr[j - 1] ^ arr[j];
     }
 
+    void doWithReadLock(Lock readLock) {
+        readLock.lock();
+
+        try {
+            System.out.println("do read");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("finish read");
+        } finally {
+            readLock.unlock();
+        }
+    }
+
+    void doWithWriteLock(Lock writeLock) {
+        writeLock.lock();
+        try {
+            System.out.println("do write");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("finish write");
+        } finally {
+            writeLock.unlock();
+        }
+    }
+
     //类定义
     interface A<T, R> {
 
@@ -1468,6 +1721,40 @@ public class MyTest {
         @Override
         public Class<?> loadClass(String name) throws ClassNotFoundException {
             return c.loadClass(name);
+        }
+    }
+
+    static class MyTask implements Comparable<MyTask>, Serializable {
+
+
+        private final long time;
+
+        public MyTask(long time) {
+            this.time = time;
+        }
+
+        @Override
+        public int compareTo(MyTask o) {
+            return Long.compare(time, o.time);
+        }
+    }
+
+    static class FIFOMutex {
+
+        private final Queue<Thread> queue = new ConcurrentLinkedQueue<>();
+        private final AtomicBoolean locked = new AtomicBoolean(false);
+
+        void lock() {
+            Thread current = Thread.currentThread();
+            queue.add(current);
+            while (queue.peek() != current || !locked.compareAndSet(false, true))
+                LockSupport.park(this);
+            queue.remove();
+        }
+
+        void unLock() {
+            locked.set(false);
+            LockSupport.unpark(queue.peek());
         }
     }
 }
